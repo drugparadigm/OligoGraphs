@@ -1,6 +1,6 @@
-# **OliGraphs: A Graph Attention Framework for Rational siRNA Efficacy Prediction**
+# **OligoGraph: A Graph Attention Framework for Rational siRNA Efficacy Prediction**
 
-OliGraphs is a multi-modal deep learning framework designed to capture the complex interplay between sequence, structure, and thermodynamics in siRNA efficacy prediction.
+OligoGraph is a multi-modal deep learning framework designed to capture the complex interplay between sequence, structure, and thermodynamics in siRNA efficacy prediction.
 
 The architecture initializes by fusing pre-trained foundation model embeddings with one-hot encoded nucleotide sequences, which are then processed through parallel feature extraction pathways: a **position-aware bidirectional LSTM encoder** captures long-range sequential dependencies, while a **multi-scale convolutional module** detects local RNA motifs. These distinct feature sets are dynamically integrated via a learnable **multi-modal attention mechanism** before propagating through a hybrid graph neural network utilizing `TransformerConv` and `GATConv` layers to rigorously model non-local molecular interactions.
 
@@ -74,8 +74,8 @@ The core `OGencoder` utilizes a hybrid GNN block repeated 8 times:
 #### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/drugparadigm/OliGraphs.git
-cd OliGraphs
+git clone https://github.com/drugparadigm/OligoGraph.git
+cd OligoGraph
 ```
 
 #### Step 2: Set Up Python Environment
@@ -83,22 +83,22 @@ Choose either Conda (Option A) or Virtual Environment (Option B):
 Option A: Conda Environment
 
 ```bash
-conda create --name oligraphs python=3.9.0
-conda activate oligraphs
+conda create --name OligoGraph python=3.9.0
+conda activate OligoGraph
 ```
 Option B: Virtual Environment
 
 ```bash
-python3.9 -m venv oligraphs
+python3.9 -m venv OligoGraph
 ```
 
 On Windows:
 ```
-oligraphs\Scripts\activate
+OligoGraph\Scripts\activate
 ```
 On macOS/Linux:
 ```
-source oligraphs/bin/activate
+source OligoGraph/bin/activate
 ```
 
 #### Step 3: Install dependencies
@@ -287,7 +287,7 @@ python inference.py --device cpu
 **Issue**: ImportError: cannot import name 'OGencoder'
 Solution: Ensure model.py is in the same directory or add to PYTHONPATH
 ```bash
-export PYTHONPATH="${PYTHONPATH}:/path/to/Oligraphs"
+export PYTHONPATH="${PYTHONPATH}:/path/to/OligoGraph"
 ```
 **Issue**: FileNotFoundError: No such file or directory: 'Data/processed_data/train_data.pkl'
 Solution: Run preprocessing first
