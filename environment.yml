@@ -1,4 +1,4 @@
-name: oligographs
+name: oligograph
 channels:
   - bioconda
   - pytorch
