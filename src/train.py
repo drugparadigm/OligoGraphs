@@ -365,7 +365,7 @@ def main():
     logger.info("=" * 30)
 
     # Setup
-    device = torch.device('cuda:2' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     logger.info(f"Using device: {device}")
 
     model = OGencoder(
@@ -378,7 +378,6 @@ def main():
 
     # Load pre-trained weights (if available)
     pretrained_path = ""
-    # pretrained_path = "enhanced_checkpoints_8257roc_615pcc/pretrained_backbone_epoch_60.pt"
     # pretrained_path = "enhanced_checkpoints/pretrained_backbone_final.pt"
     if os.path.exists(pretrained_path):
         try:
@@ -405,8 +404,8 @@ def main():
         logger.error("Processed data not found. Please run preprocessing script first.")
         return
 
-    train_loader = create_safe_dataloader(train_data, batch_size=64, shuffle=True)
-    val_loader = create_safe_dataloader(val_data, batch_size=64, shuffle=False)
+    train_loader = create_safe_dataloader(train_data, batch_size=16, shuffle=True)
+    val_loader = create_safe_dataloader(val_data, batch_size=16, shuffle=False)
 
     if not train_loader or not val_loader:
         logger.error("Failed to create dataloaders, exiting.")
