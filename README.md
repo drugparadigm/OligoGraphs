@@ -83,7 +83,7 @@ Choose either Conda (Option A) or Virtual Environment (Option B):
 Option A: Conda Environment
 
 ```bash
-conda create --name OligoGraph python=3.9.0
+conda create --name OligoGraph python=3.9.5
 conda activate OligoGraph
 ```
 Option B: Virtual Environment
